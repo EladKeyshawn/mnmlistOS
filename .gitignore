@@ -1,0 +1,6 @@
+*.o
+*.elf
+logs/*.txt
+logs/*.out
+*.iso
+.vscode
