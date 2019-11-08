@@ -23,3 +23,6 @@ qemu: os.iso
 kernel/kernel.elf:
 	make -C kernel
 	
+clean:
+	make -C kernel clean
+	rm -rf *.o os.iso
