@@ -13,10 +13,11 @@ os.iso: kernel/kernel.elf
 				iso
 
 run: os.iso
+	make clean
 	bochs -f bochsrc.txt -q
 
 qemu: os.iso
-	qemu-system-x86_64 -boot d -cdrom image.iso -m 512 -d
+	qemu-system-x86_64 -boot d -cdrom os.iso -m 512 
 
 
 
