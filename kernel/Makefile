@@ -1,4 +1,4 @@
-    OBJECTS = loader.o kmain.o tty.o libc/stdio.o
+    OBJECTS = loader.o kmain.o tty.o gdt.o libc/stdio.o
     
 	
 	

@@ -27,6 +27,7 @@ void tty__write_string(enum vga_color color, const char *string)
     
     while (*string != 0)
     {
+        // optimization using shifts (y<<8) + (y<<6) which is basically mult by 256 abd 64
         uint16_t* cursor = ((uint16_t*) video) + (terminal_y_idx * SCREEN_WIDTH) + terminal_x_idx;
 
         if (*string == '\n') {

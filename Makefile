@@ -17,9 +17,10 @@ run: os.iso
 	bochs -f bochsrc.txt -q
 
 qemu: os.iso
-	qemu-system-x86_64 -boot d -cdrom os.iso -m 512 
+	qemu-system-x86_64 -boot d -cdrom os.iso -m 512 -serial file:logs/serial.log
 
-
+debug: os.iso
+	qemu-system-x86_64 -boot d -cdrom os.iso -m 512 -serial file:logs/serial.log -s -S
 
 kernel/kernel.elf:
 	make -C kernel
