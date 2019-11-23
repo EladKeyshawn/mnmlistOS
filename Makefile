@@ -17,7 +17,7 @@ run: os.iso
 	bochs -f bochsrc.txt -q
 
 qemu: os.iso
-	qemu-system-x86_64 -boot d -cdrom os.iso -m 512 -serial file:logs/serial.log
+	qemu-system-i386 -boot d -drive format=raw,media=cdrom,file=os.iso -m 4G -serial file:logs/serial.log
 
 debug: os.iso
 	qemu-system-x86_64 -boot d -cdrom os.iso -m 512 -serial file:logs/serial.log -s -S
