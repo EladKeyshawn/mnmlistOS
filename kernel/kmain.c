@@ -16,8 +16,11 @@ void kmain()
 
 
     init_gdt();
-    printf("GDT initialized");
+    puts("GDT initialized");
 
+    // initialize serial output
+
+    // initial IDT
 
 
     // infinite loop for now
