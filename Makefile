@@ -1,5 +1,6 @@
 
-os.iso: kernel/kernel.elf
+os.iso: kernel_build
+
 	cp kernel/kernel.elf iso/boot/kernel.elf
 	genisoimage -R                              \
 				-b boot/grub/stage2_eltorito    \
@@ -12,19 +13,22 @@ os.iso: kernel/kernel.elf
                 -o os.iso                       \
 				iso
 
-run: os.iso
-	make clean
-	bochs -f bochsrc.txt -q
+all: qemu
 
-qemu: os.iso
+qemu: os.iso  
+	make -C kernel clean
 	qemu-system-i386 -boot d -drive format=raw,media=cdrom,file=os.iso -m 4G -serial file:logs/serial.log
 
 debug: os.iso
-	qemu-system-x86_64 -boot d -cdrom os.iso -m 512 -serial file:logs/serial.log -s -S
+	qemu-system-i386 -boot d -drive format=raw,media=cdrom,file=os.iso -m 4G -serial file:logs/serial.log -s -S
 
-kernel/kernel.elf:
+kernel_build:
 	make -C kernel
-	
+
 clean:
 	make -C kernel clean
 	rm -rf *.o os.iso
+
+
+.PHONY: all clean qemu kernel_build
+	

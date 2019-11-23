@@ -1,8 +1,11 @@
 
-#include "libc/include/stdio.h"
 #include "include/tty.h"
-#include "libc/include/stdint.h"
 #include "include/gdt_descriptor.h"
+#include "include/serial.h"
+
+#include "libc/include/stdio.h"
+#include "libc/include/stdint.h"
+
 
 void kmain()
 {
@@ -16,11 +19,14 @@ void kmain()
 
 
     init_gdt();
-    puts("GDT initialized");
+    puts("GDT initialized\n");
 
     // initialize serial output
+    init_serial();
+    puts("Serial COM1 initialized\n");
+    serial_puts("Serial COM1 Log");
 
-    // initial IDT
+    // initialize IDT
 
 
     // infinite loop for now
