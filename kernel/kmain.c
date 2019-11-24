@@ -13,7 +13,7 @@ void kmain()
     tty__cls(); // clear screen
 
 
-    // notice we're in protected mode here
+    // notice we're in protected mode already here
     
     // disable interrupts
 
